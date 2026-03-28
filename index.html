@@ -1,70 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Landing</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RN Herbal – Stone Crash & Stone-Go</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;600;700&family=Noto+Sans+Devanagari:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{--g1:#0d3d2b;--g2:#1a6644;--g3:#2d9b5f;--ga:#3dbf77;--gold:#c9a84c;--goldf:#f0cc6a;--org:#e8601a;--bg:#f4f9f5;--tx:#1a1a1a;--txm:#555;--sh:0 8px 32px rgba(13,61,43,.13)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
 
-<!-- HEADER -->
-<header class="header">
-    <div class="container nav">
-        <h2 class="logo">Brand</h2>
-        <button class="order-btn" onclick="orderNow()">Order Now</button>
-    </div>
-</header>
+/* STICKY NAV */
+.snav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-bottom:2px solid rgba(45,155,95,.15);box-shadow:0 2px 16px rgba(0,0,0,.08);transform:translateY(-100%);transition:transform .4s ease}
+.snav.show{transform:translateY(0)}
+.snav-in{max-width:1100px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;justify-content:space-between}
+.snav-logo{display:flex;align-items:center;gap:10px}
+.snav-logo img{height:42px;object-fit:contain}
+.snav-logo span{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--g1)}
 
-<!-- HERO -->
-<section class="hero">
-    <div class="container">
-        <h1>Premium Herbal Product</h1>
-        <p>Boost your health naturally with our high-quality solution.</p>
+/* BUTTON */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:'Poppins',sans-serif;font-weight:700;color:#fff;background:linear-gradient(145deg,#3dbf77,#1a8a4a);border:none;border-radius:10px;cursor:pointer;padding:12px 24px;font-size:.95rem;box-shadow:0 5px 0 #0d5c2a,0 8px 18px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.2);transform:translateY(0);transition:all .25s ease;text-decoration:none}
+.btn:hover{transform:translateY(-3px);box-shadow:0 8px 0 #0d5c2a,0 12px 24px rgba(0,0,0,.32)}
+.btn:active{transform:translateY(3px);box-shadow:0 2px 0 #0d5c2a}
+.btn-gold{background:linear-gradient(145deg,var(--goldf),var(--gold));color:var(--g1);box-shadow:0 5px 0 #8c6a1a,0 8px 20px rgba(201,168,76,.35)}
+.btn-gold:hover{box-shadow:0 8px 0 #8c6a1a,0 14px 28px rgba(201,168,76,.42)}
+.btn-lg{padding:16px 36px;font-size:1.05rem;border-radius:12px}
+.btn-full{width:100%;flex-direction:column;gap:3px}
 
-        <div class="price-box">
-            <span class="old-price">₹7000</span>
-            <span class="new-price">₹4000</span>
-            <span class="discount">43% OFF</span>
-        </div>
-
-        <button class="cta" onclick="orderNow()">Order Now</button>
-    </div>
-</section>
-
-<!-- PRODUCT VIDEO SLIDER -->
-<section class="video-section">
-    <h2>Product in Action</h2>
-
-    <div class="slider">
-        <button class="nav-btn left" onclick="slide(-1)">‹</button>
-
-        <div class="slider-track" id="sliderTrack">
-            <video src="video1.mp4" autoplay muted loop></video>
-            <video src="video2.mp4" muted loop></video>
-            <video src="video3.mp4" muted loop></video>
-        </div>
-
-        <button class="nav-btn right" onclick="slide(1)">›</button>
-    </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="testimonial-section">
-    <h2>What Our Customers Say</h2>
-
-    <div class="testimonial-slider">
-        <div class="testimonial-track" id="testimonialTrack">
-            <video src="t1.mp4" controls></video>
-            <video src="t2.mp4" controls></video>
-            <video src="t3.mp4" controls></video>
-        </div>
-    </div>
-</section>
-
-<script src="script.js"></script>
-</body>
-</html>.hero-logo img{height:68px;filter:drop-shadow(0 4px 14px rgba(0,0,0,.45))}
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(160deg,var(--g1) 0%,#0f4a33 50%,#163d28 100%);display:flex;flex-direction:column;align-items:center;overflow:hidden;position:relative;padding-bottom:60px}
+.hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 20% 30%,rgba(61,191,119,.12) 0%,transparent 60%),radial-gradient(ellipse at 80% 70%,rgba(201,168,76,.07) 0%,transparent 50%)}
+.hero-top{position:relative;z-index:2;width:100%;max-width:1100px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between}
+.hero-logo img{height:68px;filter:drop-shadow(0 4px 14px rgba(0,0,0,.45))}
 .hero-body{position:relative;z-index:2;text-align:center;padding:10px 20px 30px;max-width:760px}
 .pill{display:inline-block;background:rgba(232,96,26,.9);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 18px;border-radius:50px;margin-bottom:22px;animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(232,96,26,.5)}50%{box-shadow:0 0 0 10px rgba(232,96,26,0)}}
